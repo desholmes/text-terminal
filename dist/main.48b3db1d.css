@@ -1,0 +1,33 @@
+.TextTerminal * {
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+}
+.TextTerminal .command {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.TextTerminal .command .prompt {
+  margin: 0;
+}
+.TextTerminal .command .input {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  line-height: 1rem !important;
+}
+@media only screen and (min-width: 550px) {
+  .TextTerminal {
+    width: 90%;
+  }
+  .TextTerminal * {
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+  }
+  .TextTerminal .command {
+    margin-top: 2.5rem;
+  }
+}
+
+/*# sourceMappingURL=/main.48b3db1d.css.map */
