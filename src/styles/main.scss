@@ -1,36 +1,5 @@
-.TextTerminal {
-  & * {
-    font-size: 1.1rem;
-    line-height: 1.4rem;
-  }
 
-  .command {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    .prompt {
-      margin: 0;
-    }
-
-    .input {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      line-height: 1rem !important;
-    }
-  }
-
-  @media only screen and (min-width: 550px) {
-    width: 90%;
-    & * {
-      font-size: 1.5rem;
-      line-height: 1.7rem;
-    }
-
-    .command {
-      margin-top: 2.5rem;
-    }
-  }
-}
+@import "./base";
+@import "./dark";
+@import "./midnight";
+@import "./sunset";

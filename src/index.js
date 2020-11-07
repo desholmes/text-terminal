@@ -1,3 +1,8 @@
-import TextTerminal from './modules/text-terminal';
+import TextTerminal from './modules/textTerminal';
 
-const terminal = new TextTerminal({prompt:"Bash"});
+const config = {
+    prompt:"Bash",
+    theme: "sunset"
+};
+
+const terminal = new TextTerminal(config);

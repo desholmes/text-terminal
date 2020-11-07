@@ -147,7 +147,7 @@ module.exports = {
     "sass": "^1.28.0"
   }
 };
-},{}],"modules/default-commands.js":[function(require,module,exports) {
+},{}],"modules/defaultCommands.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -168,7 +168,27 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"../../package.json":"../package.json"}],"modules/text-terminal.js":[function(require,module,exports) {
+},{"../../package.json":"../package.json"}],"modules/cloneCommandEl.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _default = function _default(el) {
+  var line = el.cloneNode(true);
+  var input = line.querySelector('.input');
+  input.autofocus = false;
+  input.readOnly = true;
+  input.insertAdjacentHTML('beforebegin', input.value);
+  input.parentNode.removeChild(input);
+  line.classList.add('line');
+  return line;
+};
+
+exports.default = _default;
+},{}],"modules/textTerminal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -178,9 +198,23 @@ exports.default = void 0;
 
 var _template = _interopRequireDefault(require("./template"));
 
-var _defaultCommands = require("./default-commands");
+var _defaultCommands = require("./defaultCommands");
+
+var _cloneCommandEl = _interopRequireDefault(require("./cloneCommandEl"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -200,6 +234,8 @@ var _dom = new WeakMap();
 
 var TextTerminal = /*#__PURE__*/function () {
   function TextTerminal() {
+    var _this = this;
+
     var configProps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
     _classCallCheck(this, TextTerminal);
@@ -224,15 +260,101 @@ var TextTerminal = /*#__PURE__*/function () {
 
     _defineProperty(this, "separator", void 0);
 
+    _defineProperty(this, "theme", void 0);
+
     _defineProperty(this, "welcome", void 0);
 
-    console.log("constructor::TextTerminal");
+    _defineProperty(this, "onKeyDown", function (event) {
+      var commandInput = _classPrivateFieldGet(_this, _dom).input.value.trim();
+
+      if (event.keyCode !== 13 || !commandInput) {
+        return;
+      }
+
+      var _commandInput$split = commandInput.split(" "),
+          _commandInput$split2 = _toArray(_commandInput$split),
+          command = _commandInput$split2[0],
+          parameters = _commandInput$split2.slice(1); // if (state.prompt) {
+      //   state.prompt = false;
+      //   this.onAskCallback(command);
+      //   this.setPrompt();
+      //   this.resetCommand();
+      //   return;
+      // }
+      // Add commands to history
+
+
+      _this.history.push(commandInput);
+
+      localStorage[_classPrivateFieldGet(_this, _id)] = JSON.stringify(_this.history);
+      _this.historyCursor = _this.history.length; // Clone command as a new output line
+
+      _classPrivateFieldGet(_this, _dom).output.appendChild((0, _cloneCommandEl.default)(_classPrivateFieldGet(_this, _dom).command));
+
+      _classPrivateFieldGet(_this, _dom).input.value = ""; // Dispatch command
+
+      if (Object.keys(_this.commands).includes(command)) {
+        var callback = _this.commands[command];
+
+        if (callback) {
+          callback(_this, parameters);
+        } // if (onInputCallback) {
+        //   onInputCallback(command, parameters);
+        // }
+
+      } else {
+        _this.output("<u>".concat(command, "</u>: command not found."));
+      }
+    });
+
+    _defineProperty(this, "onKeyUp", function (event) {
+      _classPrivateFieldGet(_this, _dom).input.focus();
+
+      event.stopPropagation();
+      event.preventDefault(); // ESC
+
+      if (event.keyCode === 27) {
+        _classPrivateFieldGet(_this, _dom).input.value = "";
+        event.stopPropagation();
+        event.preventDefault();
+      }
+
+      if (event.keyCode === 38 || event.keyCode === 40) {
+        // UP key
+        if (event.keyCode === 38 && _this.historyCursor > 0) {
+          _this.historyCursor -= 1;
+        } // DOWN key
+
+
+        if (event.keyCode === 40 && _this.historyCursor < _this.history.length - 1) {
+          _this.historyCursor -= 1;
+        }
+
+        if (_this.history[_this.historyCursor]) {
+          _classPrivateFieldGet(_this, _dom).input.value = _this.history[_this.historyCursor];
+        }
+      }
+    });
+
+    _defineProperty(this, "resetCommand", function () {
+      _classPrivateFieldGet(_this, _dom).input.value = "";
+
+      _classPrivateFieldGet(_this, _dom).command.classList.remove("input"); // DOM.command.classList.remove('hidden');
+
+
+      if (_classPrivateFieldGet(_this, _dom).input.scrollIntoView) {
+        _classPrivateFieldGet(_this, _dom).input.scrollIntoView();
+      }
+    });
+
     var _configProps$containe = configProps.containerId,
         containerId = _configProps$containe === void 0 ? "text-terminal" : _configProps$containe,
         _configProps$commands = configProps.commands,
         commands = _configProps$commands === void 0 ? {} : _configProps$commands,
         _configProps$prompt = configProps.prompt,
         prompt = _configProps$prompt === void 0 ? "" : _configProps$prompt,
+        _configProps$theme = configProps.theme,
+        theme = _configProps$theme === void 0 ? "dark" : _configProps$theme,
         _configProps$welcome = configProps.welcome,
         welcome = _configProps$welcome === void 0 ? "Welcome!" : _configProps$welcome,
         _configProps$separato = configProps.separator,
@@ -248,6 +370,7 @@ var TextTerminal = /*#__PURE__*/function () {
     this.historyCursor = this.history.length;
     this.prompt = prompt;
     this.separator = separator;
+    this.theme = theme;
     this.welcome = welcome;
     this.createDom(containerEl);
     this.addListeners();
@@ -256,12 +379,39 @@ var TextTerminal = /*#__PURE__*/function () {
 
   _createClass(TextTerminal, [{
     key: "addListeners",
-    value: function addListeners() {}
+    value: function addListeners() {
+      var _this2 = this;
+
+      _classPrivateFieldGet(this, _dom).output.addEventListener("DOMSubtreeModified", function () {
+        setTimeout(function () {
+          return _classPrivateFieldGet(_this2, _dom).input.scrollIntoView();
+        }, 10);
+      }, false);
+
+      if (window) {
+        window.addEventListener("click", function () {
+          return _classPrivateFieldGet(_this2, _dom).input.focus();
+        }, false);
+      }
+
+      _classPrivateFieldGet(this, _dom).output.addEventListener("click", function (event) {
+        return event.stopPropagation();
+      }, false);
+
+      _classPrivateFieldGet(this, _dom).command.addEventListener("click", function () {
+        return _classPrivateFieldGet(_this2, _dom).input.focus();
+      }, false);
+
+      _classPrivateFieldGet(this, _dom).input.addEventListener("keyup", this.onKeyUp, false);
+
+      _classPrivateFieldGet(this, _dom).input.addEventListener("keydown", this.onKeyDown, false);
+    }
   }, {
     key: "createDom",
     value: function createDom(containerEl) {
       containerEl.classList.add(_classPrivateFieldGet(this, _id));
       containerEl.insertAdjacentHTML("beforeEnd", (0, _template.default)(this.prompt, this.separator));
+      document.querySelector("body").classList.add(this.theme);
 
       _classPrivateFieldSet(this, _dom, {
         container: containerEl.querySelector(".container"),
@@ -273,26 +423,37 @@ var TextTerminal = /*#__PURE__*/function () {
     }
   }, {
     key: "output",
-    value: function output() {}
+    value: function output() {
+      var command = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "&nbsp;";
+
+      _classPrivateFieldGet(this, _dom).output.insertAdjacentHTML("beforeEnd", "<span>".concat(command, "</span>"));
+
+      this.resetCommand();
+    }
   }]);
 
   return TextTerminal;
 }();
 
-if (window) window.TextTerminal = TextTerminal;
+if (window) {
+  window.TextTerminal = TextTerminal;
+}
+
 var _default = TextTerminal;
 exports.default = _default;
-},{"./template":"modules/template.js","./default-commands":"modules/default-commands.js"}],"index.js":[function(require,module,exports) {
+},{"./template":"modules/template.js","./defaultCommands":"modules/defaultCommands.js","./cloneCommandEl":"modules/cloneCommandEl.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
-var _textTerminal = _interopRequireDefault(require("./modules/text-terminal"));
+var _textTerminal = _interopRequireDefault(require("./modules/textTerminal"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var terminal = new _textTerminal.default({
-  prompt: "Bash"
-});
-},{"./modules/text-terminal":"modules/text-terminal.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var config = {
+  prompt: "Bash",
+  theme: "sunset"
+};
+var terminal = new _textTerminal.default(config);
+},{"./modules/textTerminal":"modules/textTerminal.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -320,7 +481,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55375" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55863" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
