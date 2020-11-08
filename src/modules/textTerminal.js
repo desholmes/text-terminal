@@ -80,7 +80,6 @@ class TextTerminal {
       "beforeEnd",
       template(this.prompt, this.separator)
     );
-    // document.querySelector("body").classList.add(this.theme);
 
     this.#dom = {
       container: containerEl.querySelector(".container"),

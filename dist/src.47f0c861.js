@@ -11,4 +11,4 @@ module.exports={name:"text-term",version:"0.1.0",description:"",main:"index.js",
 },{"./template":"A8aD","./defaultCommands":"aGLO","./cloneCommandEl":"cPGK"}],"Focm":[function(require,module,exports) {
 "use strict";var e=t(require("./modules/textTerminal"));function t(e){return e&&e.__esModule?e:{default:e}}var r={prompt:"Bash",theme:"sunset"},u=new e.default(r);
 },{"./modules/textTerminal":"OesE"}]},{},["Focm"], null)
-//# sourceMappingURL=/src.2e0fa3a1.js.map
+//# sourceMappingURL=/src.47f0c861.js.map
