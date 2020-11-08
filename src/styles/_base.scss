@@ -1,4 +1,7 @@
 .TextTerminal {
+    height: 100%;
+    padding: 1rem;
+
     & * {
       font-family: "Courier New", Courier, monospace;
       font-size: 1.1rem;
