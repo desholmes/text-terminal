@@ -1,11 +1,11 @@
 {
-  "name": "text-term",
+  "name": "text-terminal",
   "version": "0.1.0",
   "description": "A simple, extendable terminal interface for the web.",
-  "repository": "https://github.com/desholmes/text-term",
+  "repository": "https://github.com/desholmes/text-terminal",
   "scripts": {
     "start": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html",
+    "build": "parcel build ./src/styles/main.scss --out-file TextTerminal-$npm_package_version.css  && parcel build ./src/index.js --out-file TextTerminal-$npm_package_version.js",
     "lint": "prettier --check .",
     "lint-fix": "prettier --write ."
   },
