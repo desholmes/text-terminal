@@ -127,7 +127,7 @@ class TextTerminal {
       //   onInputCallback(command, parameters);
       // }
     } else {
-      this.output(`<u>${command}</u>: command not found.`);
+      this.output(`<b>${command}</b>: command not found.`);
     }
   };
 
@@ -171,10 +171,6 @@ class TextTerminal {
   resetCommand = () => {
     this.#dom.input.value = "";
     this.#dom.command.classList.remove("input");
-    // DOM.command.classList.remove('hidden');
-    if (this.#dom.input.scrollIntoView) {
-      this.#dom.input.scrollIntoView();
-    }
   };
 }
 

@@ -1,6 +1,9 @@
 .TextTerminal {
-    height: 100%;
-    padding: 1rem;
+    min-height: 100%;
+    
+    .container {
+      padding: 1rem;
+    }
 
     & * {
       font-family: "Courier New", Courier, monospace;
@@ -33,12 +36,14 @@
     }
   
     @media only screen and (min-width: 550px) {
-      width: 90%;
       & * {
         font-size: 1.5rem;
         line-height: 1.7rem;
       }
   
+      .container {
+        width: 90%;
+      }
       .command {
         margin-top: 2.5rem;
       }
