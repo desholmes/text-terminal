@@ -1,8 +1,8 @@
-import TextTerminal from './modules/textTerminal';
+import TextTerminal from "./modules/textTerminal";
 
 const config = {
-    prompt:"Bash",
-    theme: "sunset"
+  prompt: "textTerm@quest",
+  theme: "dark",
 };
 
 const terminal = new TextTerminal(config);

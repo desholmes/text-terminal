@@ -75,7 +75,7 @@ class TextTerminal {
   }
 
   createDom(containerEl) {
-    containerEl.classList.add(this.#id,this.theme);
+    containerEl.classList.add(this.#id, this.theme);
     containerEl.insertAdjacentHTML(
       "beforeEnd",
       template(this.prompt, this.separator)
