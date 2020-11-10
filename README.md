@@ -73,7 +73,7 @@ const terminal = new TextTerminal(config);
 
 Text Terminal has the following themes bundled with it:
 
-### Dark
+### Dark (default)
 
 ```javascript
 const config = {
@@ -81,7 +81,27 @@ const config = {
 };
 ```
 
-![dark](https://camo.githubusercontent.com/5b9ae64751384c654f9a63e4fffbfd5b6b7135df88b5435d0c8c44946025e4ad/68747470733a2f2f692e696d6775722e636f6d2f7952746237334a2e676966)
+![dark](https://user-images.githubusercontent.com/1830123/98743681-599ef680-23a8-11eb-9193-82920513f5d2.png)
+
+### Midnight
+
+```javascript
+const config = {
+    theme: "midnight",
+};
+```
+
+![midnight](https://user-images.githubusercontent.com/1830123/98743936-c0241480-23a8-11eb-95c0-62dbabc15ad1.png)
+
+### Sunset
+
+```javascript
+const config = {
+    theme: "sunset",
+};
+```
+
+![sunset](https://user-images.githubusercontent.com/1830123/98744070-ff526580-23a8-11eb-8140-04727285d6f6.png)
 
 ## Default Commands
 
