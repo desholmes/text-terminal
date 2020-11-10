@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf ./dist/* ",
     "start": "npm run clean && parcel ./src/index.html",
-    "build": "npm run clean && parcel build ./src/styles/main.scss --out-file TextTerminal-$npm_package_version.css  && parcel build ./src/index.js --out-file TextTerminal-$npm_package_version.js",
+    "build": "npm run clean && parcel build ./src/styles/main.scss --out-file text-terminal-$npm_package_version.css  && parcel build ./src/index.js --out-file text-terminal-$npm_package_version.js",
     "lint": "prettier --check .",
     "lint-fix": "prettier --write ."
   },
