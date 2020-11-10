@@ -81,6 +81,8 @@ const config = {
 };
 ```
 
+![dark](https://camo.githubusercontent.com/5b9ae64751384c654f9a63e4fffbfd5b6b7135df88b5435d0c8c44946025e4ad/68747470733a2f2f692e696d6775722e636f6d2f7952746237334a2e676966)
+
 ## Default Commands
 
 The following commands can be overwritten with your own custom commands.
