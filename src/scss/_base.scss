@@ -1,5 +1,12 @@
 .TextTerminal {
+  min-height: 100%;
+
+  .container {
+    padding: 1rem;
+  }
+
   & * {
+    font-family: "Courier New", Courier, monospace;
     font-size: 1.1rem;
     line-height: 1.4rem;
   }
@@ -18,17 +25,25 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      line-height: 1rem !important;
+      line-height: 1rem;
+      background-color: transparent;
+      border: none;
+      margin: 0;
+      padding: 0 0 0 0.5rem;
+      outline: none;
+      font-weight: 400;
     }
   }
 
   @media only screen and (min-width: 550px) {
-    width: 90%;
     & * {
       font-size: 1.5rem;
       line-height: 1.7rem;
     }
 
+    .container {
+      width: 90%;
+    }
     .command {
       margin-top: 2.5rem;
     }

@@ -1,16 +1,21 @@
 {
-  "name": "text-term",
+  "name": "text-terminal",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple, extendable terminal interface for the web.",
+  "repository": "https://github.com/desholmes/text-terminal",
   "scripts": {
+    "clean": "rm -rf ./dist/* ",
     "start": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html"
+    "build": "npm run clean && parcel build ./src/scss/main.scss --out-file text-terminal.css  && parcel build ./src/modules/textTerminal.js --out-file text-terminal.js",
+    "lint": "prettier --check .",
+    "lint-fix": "prettier --write ."
   },
-  "author": "",
+  "main": "dist/text-terminal.js",
+  "author": "Des Holmes https://github.com/desholmes",
   "license": "MIT",
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
+    "prettier": "2.1.2",
     "sass": "^1.28.0"
   }
 }

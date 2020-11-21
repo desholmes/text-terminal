@@ -1,4 +1,4 @@
-export default (prompt, separator) => (`
+export default (prompt, separator) => `
   <div class="container">
     <output></output>
     <div class="command">
@@ -6,4 +6,4 @@ export default (prompt, separator) => (`
       <input class="input" spellcheck="false" autofocus />
     </div>
   </div>
-`);
+`;
