@@ -3,7 +3,7 @@ export default (prompt, separator) => `
     <output></output>
     <div class="command">
       <div class="prompt">${prompt}${separator}</div>
-      <input class="input" spellcheck="false" autofocus />
+      <input class="input" spellcheck="false" autocapitalize="off" autofocus />
     </div>
   </div>
 `;

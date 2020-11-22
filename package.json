@@ -1,6 +1,6 @@
 {
   "name": "text-terminal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple, extendable terminal interface for the web.",
   "repository": "https://github.com/desholmes/text-terminal",
   "scripts": {
