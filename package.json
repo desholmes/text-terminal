@@ -11,6 +11,7 @@
     "lint-fix": "prettier --write ."
   },
   "main": "dist/text-terminal.js",
+  "types": "dist/text-terminal.d.ts",
   "author": "Des Holmes https://github.com/desholmes",
   "license": "MIT",
   "devDependencies": {
