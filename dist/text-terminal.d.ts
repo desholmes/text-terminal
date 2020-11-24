@@ -1,4 +1,4 @@
-declare module 'text-terminal' {
+declare module "text-terminal" {
   export default class TextTerminal {
     constructor(options?: Partial<{
       containerId: string;
@@ -11,7 +11,15 @@ declare module 'text-terminal' {
 
     addListeners(): void;
   
+    /**
+     * Clears the contents of the terminal output.
+     */
     clear(): void;
+
+    /**
+     * Outputs the version of Text Terminal.
+     */
+    version(): void;
   
     createDom(containerEl: HTMLElement): void;
   
