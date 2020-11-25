@@ -172,6 +172,6 @@ If you're interested in contributing use the commands below:
 
 1. `npm`: Install deps
 1. `npm start`: Start local dev server
-1. `npm run build`: Builds the versioned js and css files to [./dist](./dist)
+1. `npm run build`: Builds the js and css files to [./dist](./dist)
 
 Tested using [Node.js v12.16.1](https://nodejs.org/en/).
