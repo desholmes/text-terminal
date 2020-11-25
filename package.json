@@ -4,7 +4,7 @@
   "description": "A simple, extendable terminal interface for the web.",
   "repository": "https://github.com/desholmes/text-terminal",
   "scripts": {
-    "clean": "rm -rf ./dist/* ",
+    "clean": "rm -rf ./dist/*.css ./dist/*.map ./dist/*.js ",
     "start": "parcel ./src/index.html",
     "build": "npm run clean && parcel build ./src/scss/main.scss --out-file text-terminal.css  && parcel build ./src/modules/textTerminal.js --out-file text-terminal.js",
     "lint": "prettier --check .",
