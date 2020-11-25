@@ -63,13 +63,29 @@ import "text-terminal/dist/text-terminal.css";
 const commands = {};
 
 const config = {
-  containerId = "text-terminal",
+  containerId: "text-terminal",
   prompt: "textTerm@quest",
   theme: "dark",
   commands: commands,
 };
 
 const terminal = new TextTerminal(config);
+```
+
+Text Terminal also comes with TypeScript compatibility out of the box, so you can use it in your TypeScript projects. To adapt from the above excerpt:
+
+```typescript
+// Create a new TextTerminal with a config object where all properties are optional
+const terminal = new TextTerminal({
+  containerId: "text-terminal",
+  prompt: "textTerm@quest",
+  theme: "dark",
+  commands: {},
+});
+
+// All methods of the TextTerminal class are recognised by your IDE with correct typing
+terminal.createDom(document.getElementById("my-element")); // HTMLElement argument type
+terminal.output("Hey Text Terminal!") // string argument type
 ```
 
 ## Themes
