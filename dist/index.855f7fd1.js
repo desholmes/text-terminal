@@ -465,7 +465,7 @@ const config = {
 };
 const terminal = new _textTerminalDefault.default(config);
 
-},{"./modules/textTerminal":"1xDfR","./scss/main.scss":"e14w1","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"1xDfR":[function(require,module,exports) {
+},{"./modules/textTerminal":"1xDfR","./scss/main.scss":"bKzMy","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"1xDfR":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _template = require("./template");
@@ -645,84 +645,6 @@ exports.default = (el)=>{
     return line;
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"e14w1":[function(require,module,exports) {
-module.exports = 
-    body {
-      margin: 0;
-      padding: 0;
-      overscroll-behavior-y: none;
-    }
-  
-.TextTerminal {
-  min-height: 100%;
-}
-.TextTerminal .container {
-  padding: 1rem;
-}
-.TextTerminal * {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 1.1rem;
-  line-height: 1.4rem;
-}
-.TextTerminal .command {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.TextTerminal .command.line .prompt {
-  padding-right: 0.5rem;
-}
-.TextTerminal .command .prompt {
-  margin: 0;
-}
-.TextTerminal .command .input {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  line-height: 1rem;
-  background-color: transparent;
-  border: none;
-  margin: 0;
-  padding: 0 0 0 0.5rem;
-  outline: none;
-  font-weight: 400;
-}
-@media only screen and (min-width: 550px) {
-  .TextTerminal * {
-    font-size: 1.5rem;
-    line-height: 1.7rem;
-  }
-  .TextTerminal .container {
-    width: 90%;
-  }
-  .TextTerminal .command {
-    margin-top: 2.5rem;
-  }
-}
-
-.dark {
-  background-color: #000;
-}
-.dark * {
-  color: #fff;
-}
-
-.midnight {
-  background-color: #03235f;
-}
-.midnight * {
-  color: #f4d396;
-}
-
-.TextTerminal.sunset {
-  background-color: #7b3103;
-}
-.TextTerminal.sunset * {
-  color: #fadbdb;
-}
-;
-
-},{}]},["luHj6","9L96Z"], "9L96Z", "parcelRequired377")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"bKzMy":[function() {},{}]},["luHj6","9L96Z"], "9L96Z", "parcelRequired377")
 
 //# sourceMappingURL=index.855f7fd1.js.map
