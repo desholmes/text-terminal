@@ -17,6 +17,12 @@
     flex-direction: row;
     align-items: center;
 
+    &.line {
+      .prompt {
+        padding-right: 0.5rem;
+      }
+    }
+
     .prompt {
       margin: 0;
     }

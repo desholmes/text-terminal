@@ -1,6 +1,6 @@
 {
   "name": "text-terminal",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A simple, extendable terminal interface for the web.",
   "repository": "https://github.com/desholmes/text-terminal",
   "scripts": {
@@ -15,8 +15,10 @@
   "author": "Des Holmes https://github.com/desholmes",
   "license": "MIT",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4",
+    "@parcel/transformer-sass": "2.0.0-rc.0",
+    "@parcel/transformer-json": "2.0.0-rc.0",
     "prettier": "2.1.2",
-    "sass": "^1.28.0"
+    "parcel": "2.0.0-rc.0",
+    "sass": "1.42.1"
   }
 }
