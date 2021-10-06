@@ -1,22 +1,23 @@
 {
   "name": "text-terminal",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A simple, extendable terminal interface for the web.",
   "repository": "https://github.com/desholmes/text-terminal",
   "scripts": {
     "clean": "rm -rf ./dist/*.css ./dist/*.map ./dist/*.js ",
-    "start": "parcel ./src/index.html",
-    "build": "npm run clean && parcel build ./src/scss/main.scss --out-file text-terminal.css  && parcel build ./src/modules/textTerminal.js --out-file text-terminal.js",
+    "start": "npm run clean && parcel --no-cache --lazy ./src/index.html",
+    "build": "npm run clean && parcel build ./src/scss/text-terminal.scss && parcel build ./src/modules/textTerminal.js",
     "lint": "prettier --check .",
     "lint-fix": "prettier --write ."
   },
-  "main": "dist/text-terminal.js",
-  "types": "dist/text-terminal.d.ts",
+  "types": "dist/textTerminal.d.ts",
   "author": "Des Holmes https://github.com/desholmes",
   "license": "MIT",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4",
+    "@parcel/transformer-sass": "2.0.0-rc.0",
+    "@parcel/transformer-json": "2.0.0-rc.0",
     "prettier": "2.1.2",
-    "sass": "^1.28.0"
+    "parcel": "2.0.0-rc.0",
+    "sass": "1.42.1"
   }
 }

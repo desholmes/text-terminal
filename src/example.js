@@ -1,9 +1,9 @@
 import TextTerminal from "./modules/textTerminal";
-import "./scss/main.scss";
+import "./scss/text-terminal.scss";
 
 const config = {
   prompt: "textTerm@quest",
-  theme: "dark",
+  theme: "jinx",
 };
 
 const terminal = new TextTerminal(config);

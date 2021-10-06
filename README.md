@@ -6,7 +6,7 @@ A simple, extendable terminal interface for the web, used by [text-quest](https:
 
 ### Option 1 Use the CSS and JavaScript in your HTML
 
-Follow the example below to include the CSS and JavaScript directly into your HTML page:
+Follow the example below to include the CSS and JavaScript directly into your HTML page (download the files from [GitHub](https://github.com/desholmes/text-terminal/tree/main/dist)):
 
 ```html
 <html>
@@ -122,6 +122,16 @@ const config = {
 
 ![sunset](https://user-images.githubusercontent.com/1830123/98744070-ff526580-23a8-11eb-8140-04727285d6f6.png)
 
+### Jinx
+
+```javascript
+const config = {
+  theme: "jinx",
+};
+```
+
+![jinx](https://user-images.githubusercontent.com/1830123/136161299-287f4ffe-cc87-4193-8894-c4109c805022.png)
+
 ---
 
 ## Default Commands
@@ -143,7 +153,8 @@ Outputs the version of Text Terminal.
 ```js
 terminal.version();
 
-Text Terminal v0.1.0
+Text Terminal v0.2.0
+
 ```
 
 ## Methods
@@ -152,11 +163,15 @@ These methods are exposed by Text Terminal for you to use:
 
 ### clear()
 
+Clears the contents of the terminal output.
+
 ```js
 terminal.clear();
 ```
 
 ### output()
+
+Add a string to the terminal output.
 
 ```js
 terminal.output("Hey Text Terminal!");
@@ -170,7 +185,7 @@ Hey Text Terminal!
 
 If you're interested in contributing use the commands below:
 
-1. `npm`: Install deps
+1. `npm i`: Install deps
 1. `npm start`: Start local dev server
 1. `npm run build`: Builds the js and css files to [./dist](./dist)
 
